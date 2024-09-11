@@ -11,6 +11,6 @@ public class Test {
     @GetMapping("/")
     @ResponseBody
     public String info() {
-        return "NV";
+        return "Go DS";
     }
 }
