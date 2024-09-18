@@ -1,18 +1,16 @@
-package com.example.springkpi;
+package com.example.springkpi.lessons;
 
-import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
-@SpringBootApplication
+//@SpringBootApplication
 public class SpringKpiApplication {
 
 	public static void main(String[] args) {
