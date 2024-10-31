@@ -34,5 +34,12 @@ public class CurrencyController {
         return "redirect:/currencies";
     }
 
+    @PostMapping("/delete/{id}")
+    public String deleteCurrency(@PathVariable Long id, @RequestParam String role) {
+        if("admin".equalsIgnoreCase(role)) {
+            service.deleteCurrency(id);
+        }
+        return "redirect:/currencies";
+    }
 
 }
