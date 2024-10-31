@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.Map;
 
 @Service
 public class CurrencyService {
@@ -33,12 +34,6 @@ public class CurrencyService {
         currencyRepository.delete(id);
     }
 
-
-//    public void getAllExchangeRatesToday() {
-//
-//    }
-//    public void getCertainExchangeRateCertainTime(LocalDate startDate, LocalDate endDate) {
-//
-//    }
+    public Map<Long, Currency> getAllCurrencies() { return currencyRepository.findAll(); }
 
 }

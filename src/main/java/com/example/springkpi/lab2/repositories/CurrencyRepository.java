@@ -26,5 +26,4 @@ public class CurrencyRepository {
     public Map<Long, Currency> findAll() {
         return currencies;
     }
-
 }
