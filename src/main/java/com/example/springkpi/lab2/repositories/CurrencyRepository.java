@@ -22,4 +22,9 @@ public class CurrencyRepository {
     public void delete(Long id) {
         currencies.remove(id);
     }
+
+    public Map<Long, Currency> findAll() {
+        return currencies;
+    }
+
 }
