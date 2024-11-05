@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><title>Currencies List</title></head>
+<body>
+<h1>Currencies List</h1>
+<table>
+    <tr><th>Name</th><th>Code</th></tr>
+    <tr th:each="currency : ${currencies}">
+        <td th:text="${currency.name}"></td>
+        <td th:text="${currency.code}"></td>
+    </tr>
+</table>
+</body>
+</html>

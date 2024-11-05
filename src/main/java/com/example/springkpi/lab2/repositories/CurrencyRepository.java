@@ -24,6 +24,7 @@ public class CurrencyRepository {
     }
 
     public Map<Long, Currency> findAll() {
+        System.out.println(currencies);
         return currencies;
     }
 }

@@ -12,6 +12,7 @@ import java.util.Map;
 public class CurrencyService {
     public final CurrencyRepository currencyRepository;
 
+    @Autowired
     public CurrencyService(CurrencyRepository currencyRepository) {
         this.currencyRepository = currencyRepository;
     }

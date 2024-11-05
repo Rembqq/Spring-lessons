@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Add Exchange Rate</title>
+</head>
+<body>
+<h1>Add Exchange Rate</h1>
+<form th:action="@{/rates/addRate}" method="post">
+    <input type="hidden" name="role" value="admin"/>
+    <div>
+        <label for="currencyCode">Currency Code:</label>
+        <input type="text" id="currencyCode" th:field="*{currencyCode}" required/>
+    </div>
+    <div>
+        <label for="date">Date:</label>
+        <input type="date" id="date" th:field="*{date}" required/>
+    </div>
+    <div>
+        <label for="rate">Exchange Rate:</label>
+        <input type="number" step="0.01" id="rate" th:field="*{rate}" required/>
+    </div>
+    <button type="submit">Add Rate</button>
+</form>
+</body>
+</html>

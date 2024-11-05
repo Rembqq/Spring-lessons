@@ -16,7 +16,9 @@ public class CurrencyController {
 
     @GetMapping
     public String listCurrencies(Model model) {
-        model.addAttribute("currencies", service.getAllCurrencies());
+        //System.out.println(service.getAllCurrencies());
+
+        model.addAttribute("currencies", service.getAllCurrencies().values());
         return "currencies";
     }
 
