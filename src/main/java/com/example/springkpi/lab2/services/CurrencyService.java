@@ -10,12 +10,14 @@ import java.util.Map;
 
 @Service
 public class CurrencyService {
-    public final CurrencyRepository currencyRepository;
 
     @Autowired
-    public CurrencyService(CurrencyRepository currencyRepository) {
-        this.currencyRepository = currencyRepository;
-    }
+    private CurrencyRepository currencyRepository;
+
+
+//    public CurrencyService(CurrencyRepository currencyRepository) {
+//        this.currencyRepository = currencyRepository;
+//    }
 
     public Currency addCurrency(Currency currency) {
         return currencyRepository.save(currency);
@@ -29,6 +31,14 @@ public class CurrencyService {
             return currencyRepository.save(existing);
         }
         return null;
+    }
+
+    public Currency getCurrencyById(Long id) {
+        return currencyRepository.findById(id);
+    }
+
+    public Currency getCurrencyByCode(String code) {
+        return currencyRepository.findByCode(code);
     }
 
     public void deleteCurrency(Long id) {

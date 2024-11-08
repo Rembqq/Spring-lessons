@@ -19,12 +19,20 @@ public class CurrencyRepository {
         return currencies.get(id);
     }
 
+    public Currency findByCode(String code) {
+        for(Currency currency : currencies.values()) {
+            if(currency.getCode().equals(code)) {
+                return currency;
+            }
+        }
+        throw new IllegalArgumentException();
+    }
+
     public void delete(Long id) {
         currencies.remove(id);
     }
 
     public Map<Long, Currency> findAll() {
-        System.out.println(currencies);
         return currencies;
     }
 }

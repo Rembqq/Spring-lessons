@@ -10,7 +10,7 @@ import java.time.LocalDate;
 @Data
 @RequiredArgsConstructor
 public class ExchangeRate {
-    private Long id;
+    //private Long id;
     private Currency currency;
     private LocalDate date;
     private BigDecimal rate;
