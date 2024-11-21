@@ -1,7 +1,7 @@
-package com.example.springkpi.lab2.services;
+package com.example.springkpi.lab3.services;
 
-import com.example.springkpi.lab2.models.Currency;
-import com.example.springkpi.lab2.repositories.CurrencyRepository;
+import com.example.springkpi.lab3.models.Currency;
+import com.example.springkpi.lab3.repositories.CurrencyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

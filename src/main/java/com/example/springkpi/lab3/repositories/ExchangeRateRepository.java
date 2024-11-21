@@ -1,6 +1,6 @@
-package com.example.springkpi.lab2.repositories;
+package com.example.springkpi.lab3.repositories;
 
-import com.example.springkpi.lab2.models.ExchangeRate;
+import com.example.springkpi.lab3.models.ExchangeRate;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDate;
