@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Exchange Rates</title>
+</head>
+<body>
+<h1>Exchange Rates</h1>
+
+<!-- Вибірка валютного курсу за допомогою switch -->
+<p th:switch="${rates.size()}">
+    <span th:case="0">No rates available!</span>
+    <span th:case="1">1 exchange rate found.</span>
+    <span th:case="*" th:text="${rates.size()} + ' exchange rates found.'"></span>
+</p>
+
+
+<table>
+    <tr>
+        <th>Currency</th>
+        <th>Rate</th>
+        <th>Date</th>
+    </tr>
+    <!-- Цикл для відображення курсів -->
+    <tr th:each="rate : ${rates}">
+        <td th:text="${rate.currency.name}"></td>
+        <td th:text="${rate.rate}"></td>
+        <td th:text="${rate.date}"></td>
+    </tr>
+</table>
+</body>
+</html>

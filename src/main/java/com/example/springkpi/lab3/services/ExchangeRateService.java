@@ -1,7 +1,7 @@
-package com.example.springkpi.lab2.services;
+package com.example.springkpi.lab3.services;
 
-import com.example.springkpi.lab2.models.ExchangeRate;
-import com.example.springkpi.lab2.repositories.ExchangeRateRepository;
+import com.example.springkpi.lab3.models.ExchangeRate;
+import com.example.springkpi.lab3.repositories.ExchangeRateRepository;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;

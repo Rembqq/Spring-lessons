@@ -1,4 +1,4 @@
-package com.example.springkpi.lab2.models;
+package com.example.springkpi.lab3.models;
 
 import lombok.Data;
 import lombok.RequiredArgsConstructor;

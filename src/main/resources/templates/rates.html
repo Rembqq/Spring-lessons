@@ -3,14 +3,14 @@
 <head><title>Exchange Rates</title></head>
 
 <body>
-    <h1>Exchange Rates</h1>
-    <table>
-        <tr><th>Currency</th><th>Rate</th><th>Date</th></tr>
-        <tr th:each="rate : ${rates}">
-            <td th:text="${rate.currency.name}"></td>
-            <td th:text="${rate.rate}"></td>
-            <td th:text="${rate.date}"></td>
-        </tr>
-    </table>
+<h1>Exchange Rates</h1>
+<table>
+    <tr><th>Currency</th><th>Rate</th><th>Date</th></tr>
+    <tr th:each="rate : ${rates}">
+        <td th:text="${rate.currency.name}"></td>
+        <td th:text="${rate.rate}"></td>
+        <td th:text="${rate.date}"></td>
+    </tr>
+</table>
 </body>
 </html>

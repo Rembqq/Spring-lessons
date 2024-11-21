@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Currencies List</title>
+</head>
+<body>
+<h1>Currencies List</h1>
+
+<!-- Умовне форматування: показує повідомлення, якщо список валют порожній -->
+<p th:if="${currencies.empty}">No currencies available!</p>
+<table th:unless="${currencies.empty}">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Code</th>
+    </tr>
+    <!-- Цикл для відображення всіх валют -->
+    <tr th:each="currency : ${currencies}">
+        <td th:text="${currency.id}"></td>
+        <td th:text="${currency.name}"></td>
+        <td th:text="${currency.code}"></td>
+    </tr>
+</table>

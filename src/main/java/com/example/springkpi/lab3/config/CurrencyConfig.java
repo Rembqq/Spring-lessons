@@ -1,6 +1,6 @@
-package com.example.springkpi.lab2.config;
+package com.example.springkpi.lab3.config;
 
-import com.example.springkpi.lab2.services.CurrencyService;
+import com.example.springkpi.lab3.services.CurrencyService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
