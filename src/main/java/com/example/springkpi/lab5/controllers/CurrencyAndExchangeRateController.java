@@ -40,6 +40,13 @@ public class CurrencyAndExchangeRateController {
 
     @PostMapping("/currencies/add")
     public ResponseEntity<Currency> addCurrency(@RequestBody Currency currency) {
+
+        if (currency.getName().isEmpty()) {
+            return ResponseEntity.badRequest().body(null);
+        }
+        if (currency.getCode().isEmpty()) {
+            return ResponseEntity.badRequest().body(null);
+        }
         //Currency createdCurrency = currencyService.createCurrency(currency);
         currencyService.createCurrency(currency);
         return ResponseEntity.status(HttpStatus.CREATED).body(currency);
@@ -47,6 +54,13 @@ public class CurrencyAndExchangeRateController {
 
     @PutMapping("/currencies/{id}")
     public ResponseEntity<Currency> updateCurrency(@PathVariable Long id, @RequestBody Currency currency) {
+        if (currency.getName().isEmpty()) {
+            return ResponseEntity.badRequest().body(null);
+        }
+        if (currency.getCode().isEmpty()) {
+            return ResponseEntity.badRequest().body(null);
+        }
+
         currency.setId(id);
         //Currency updateCurrency = currencyService.updateCurrency(currency);
         currencyService.updateCurrency(currency);

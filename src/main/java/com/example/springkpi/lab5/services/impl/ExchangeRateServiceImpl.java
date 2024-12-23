@@ -4,6 +4,7 @@ import com.example.springkpi.lab5.dao.ExchangeRateDAO;
 import com.example.springkpi.lab5.models.Currency;
 import com.example.springkpi.lab5.models.ExchangeRate;
 import com.example.springkpi.lab5.services.ExchangeRateService;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -35,6 +36,7 @@ public class ExchangeRateServiceImpl implements ExchangeRateService {
         return exchangeRateDAO.findByCurrencyAndDateRange(currencyCode, startDate, endDate);
     }
 
+    @Transactional
     @Override
     public void addByDateAndCode(ExchangeRate exchangeRate) {
         exchangeRateDAO.create(exchangeRate);

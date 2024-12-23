@@ -1,6 +1,6 @@
 openapi: 3.0.3
 info:
-  title: Веб-сайт з інформацією про курси валют
+  title: Веб-сайт з інформацією про курси валют та інтеграцією PostgreSQL
   version: 0.0.1
 servers:
   - url: http://localhost:8080
@@ -219,9 +219,9 @@ components:
     Currency:
       type: object
       properties:
-        id:
-          type: integer
-          example: 1
+        # id:
+        #   type: integer
+        #   example: 1
         name:
           type: string
           example: Dollar
@@ -232,34 +232,13 @@ components:
     changedCurrency:
       type: object
       properties:
-        id:
-          type: integer
-          example: 1
+        # id:
+        #   type: integer
+        #   example: 1
         name:
           type: string
           example: US_Dollar
         code:
           type: string
           example: USD
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

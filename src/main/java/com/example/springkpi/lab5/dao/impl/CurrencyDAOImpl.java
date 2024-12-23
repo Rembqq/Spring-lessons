@@ -4,6 +4,7 @@ import com.example.springkpi.lab5.dao.CurrencyDAO;
 import com.example.springkpi.lab5.models.Currency;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -14,6 +15,7 @@ public class CurrencyDAOImpl implements CurrencyDAO {
     @PersistenceContext
     private EntityManager entityManager;
 
+    @Transactional
     @Override
     public Long create(Currency currency) {
         entityManager.persist(currency);
