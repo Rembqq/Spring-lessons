@@ -13,11 +13,6 @@ public class CurrencyService {
     @Autowired
     private CurrencyRepository currencyRepository;
 
-
-//    public CurrencyService(CurrencyRepository currencyRepository) {
-//        this.currencyRepository = currencyRepository;
-//    }
-
     public Currency addCurrency(Currency currency) {
         return currencyRepository.save(currency);
     }

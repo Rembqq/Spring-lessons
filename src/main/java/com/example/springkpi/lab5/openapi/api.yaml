@@ -1,0 +1,265 @@
+openapi: 3.0.3
+info:
+  title: Веб-сайт з інформацією про курси валют
+  version: 0.0.1
+servers:
+  - url: http://localhost:8080
+paths:
+  /rates:
+    get:
+      description: Ця операція повертає список курсів валют за сьогоднішню дату.
+      responses:
+        '200':
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/exchangeRates"
+        '500':
+          description: Internal Server Error
+  /rates/currency:
+    get:
+      description: Ця операція повертає список курсів певної валюти за встановлену дату.
+      parameters:
+        - name: code
+          in: query
+          required: false
+          description: Currency code (e.g., USD, UAH)
+          schema:
+            type: string
+            example: UAH
+        - name: startDate
+          in: query
+          required: false
+          description: DateTime (ISO format)
+          schema:
+            type: string
+            format: date # or date-time
+            example: 2024-11-19
+        - name: endDate
+          in: query
+          required: false
+          description: DateTime (ISO format)
+          schema:
+            type: string
+            format: date
+            example: 2024-11-22
+      responses:
+        '200':
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/exchangeRates"
+        '500':
+          description: Internal Server Error
+  /currencies:
+    description: Ця операція повертає список назв валют, їх кодів та ідентифікаторів.
+    get:
+      responses:
+        '200':
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/getCurrencies"
+        '500':
+          description: Internal Server Error
+  /currencies/add:
+    description: Додає валюту.
+    post:
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Currency"
+
+
+      responses:
+        '201':
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Currency"
+        '500':
+          description: Internal Server Error
+  /rates/addByDayAndCode:
+    description: Додає курс валюти на певну дату.
+    post:
+      parameters:
+        - name: currencyCode
+          in: query
+          required: false
+          description: Currency code (e.g., USD, UAH)
+          schema:
+            type: string
+            example: UAH
+        - name: date
+          in: query
+          required: false
+          description: DateTime (ISO format)
+          schema:
+            type: string
+            format: date # or date-time
+            example: 2024-11-19
+        - name: rate
+          in: query
+          required: false
+          description: High-precision exchange rate represented as BigDecimal
+          schema:
+            type: number
+            format: double
+            example: 1234.56789
+
+      responses:
+        '201':
+          description: Resource created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/exchangeRates"
+        '500':
+          description: Internal Server Error
+
+  /currencies/{id}:
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          example: 1
+    get:
+      responses:
+        '200':
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Currency"
+        '500':
+          description: Internal Server Error
+    put:
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/changedCurrency"
+      responses:
+        '204':
+          description: Changed
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/changedCurrency"
+        '500':
+          description: Internal Server Error
+
+    delete:
+      responses:
+        '204':
+          description: Deleted
+        '500':
+          description: Internal Server Error
+
+components:
+  schemas:
+    getCurrencies:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: integer
+            example: 2
+          name:
+            type: string
+            example: Hryvnia
+          code:
+            type: string
+            example: UAH
+      example:
+        - id: 1
+          name: Dollar
+          code: USD
+        - id: 2
+          name: Hryvnia
+          code: UAH
+
+    exchangeRates:
+      type: array
+      items:
+        type: object
+        properties:
+          currency:
+            type: object
+            properties:
+              id:
+                type: integer
+                example: 1
+              name:
+                type: string
+                example: Dollar
+              code:
+                type: string
+                example: USD
+          date:
+            type: string
+            format: date
+            example: 2024-11-19
+          rate:
+            type: number
+            format: double
+            description: High-precision exchange rate represented as BigDecimal
+            example: 1234.56789
+
+    Currency:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        name:
+          type: string
+          example: Dollar
+        code:
+          type: string
+          example: USD
+
+    changedCurrency:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        name:
+          type: string
+          example: US_Dollar
+        code:
+          type: string
+          example: USD
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
