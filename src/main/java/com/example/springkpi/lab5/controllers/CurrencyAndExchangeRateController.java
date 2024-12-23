@@ -1,5 +1,6 @@
 package com.example.springkpi.lab5.controllers;
 
+import com.example.springkpi.lab5.dao.ExchangeRateDAO;
 import com.example.springkpi.lab5.services.CurrencyService;
 import com.example.springkpi.lab5.services.ExchangeRateService;
 import com.example.springkpi.lab5.models.Currency;
@@ -16,16 +17,13 @@ import java.util.List;
 
 @RestController
 public class CurrencyAndExchangeRateController {
-    CurrencyService currencyService;
+    private final CurrencyService currencyService;
     private final ExchangeRateService exService;
 
-    public CurrencyAndExchangeRateController(ExchangeRateService exService) {
-        this.exService = exService;
-    }
-
     @Autowired
-    public void setService(CurrencyService service) {
-        this.currencyService = service;
+    public CurrencyAndExchangeRateController(CurrencyService currencyService, ExchangeRateService exService) {
+        this.currencyService = currencyService;
+        this.exService = exService;
     }
 
     // CRUD for Currency
@@ -42,15 +40,18 @@ public class CurrencyAndExchangeRateController {
 
     @PostMapping("/currencies/add")
     public ResponseEntity<Currency> addCurrency(@RequestBody Currency currency) {
-        Currency createdCurrency = currencyService.addCurrency(currency);
-        return ResponseEntity.status(HttpStatus.CREATED).body(createdCurrency);
+        //Currency createdCurrency = currencyService.createCurrency(currency);
+        currencyService.createCurrency(currency);
+        return ResponseEntity.status(HttpStatus.CREATED).body(currency);
     }
 
     @PutMapping("/currencies/{id}")
     public ResponseEntity<Currency> updateCurrency(@PathVariable Long id, @RequestBody Currency currency) {
         currency.setId(id);
-        Currency updateCurrency = currencyService.updateCurrency(currency);
-        return updateCurrency != null ? ResponseEntity.ok(updateCurrency) : ResponseEntity.notFound().build();
+        //Currency updateCurrency = currencyService.updateCurrency(currency);
+        currencyService.updateCurrency(currency);
+        //return currency != null ? ResponseEntity.ok(currency) : ResponseEntity.notFound().build();
+        return ResponseEntity.ok(currency);
     }
 
     @DeleteMapping("/currencies/{id}")
@@ -98,7 +99,7 @@ public class CurrencyAndExchangeRateController {
 //            //@RequestBody @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date,
 //            @RequestBody String currencyCode
     ) {
-        Currency currency = currencyService.getCurrencyByCode(currencyCode);
+        Currency currency = currencyService.findCurrenciesByCode(currencyCode);
 
         if (currency == null) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);

@@ -1,16 +1,16 @@
-package com.example.springkpi.lab5.repositories;
+package com.example.springkpi.lab5.dao;
 
 import com.example.springkpi.lab5.models.Currency;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
+import java.util.List;
 
-@Repository
-public interface CurrencyRepository extends JpaRepository<Currency, Long> {
-    Currency findByCode(String code); // Автоматически найдет валюту по ее коду
+public interface CurrencyDAO {
+    Long create(Currency currency);
+    Currency read(Long id);
+    void update(Currency currency);
+    void delete(Long id);
+    Currency findByCode(String code);
+    List<Currency> findAll();
 }
 
 //@Repository
